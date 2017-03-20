@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl" v-bind:class="myAttr">
+	<span v-if="isShow">isShow</span>
+	<br />
+	<span v-once>msg2 v-once: will not change {{msg2}}</span>
+	<br />
+	<span v-html="msg3">msg3 v-html</span>
+	<br />
+	<button v-bind:disabled="isDisabled" v-bind:id="'id' + id">Button</button> <!-- 这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析 -->
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var data =  {
+		isShow: false,
+		msg2: '<span>msg2</span>',
+		msg3: '<span>msg3 v-html</span>',
+		myAttr: 'myClass',    // Mustache 不能在 HTML 属性中使用，应使用 v-bind 指令：
+		isDisabled: true,
+		id: 222
+	};
+	var vm = new Vue({
+		el: '#vueEl',
+		data: data
+	});
+
+	vm.$watch('msg1', function (newVal, oldVal) {
+		console.log('$watch msg1 ---------');
+		console.log(newVal);
+		console.log(oldVal);
+	});
+	// 都能重新渲染, 只输出一次
+	vm.msg1 = 111;
+	data.msg1 = 222;
+
+
+
+	setTimeout(function() {
+		vm.msg1 = '333';
+		setTimeout(function () {
+			data.msg1 = 444;
+		}, 500);
+	}, 500);
+
+	/**
+	 * 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。
+	 */
+
+</script>
+</body>
+</html>
