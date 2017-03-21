@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl" class="static" :class="classObject">
+	class object
+</div>
+
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			classObject: {
+				isActive: false,
+				hasError: true
+			}
+		}
+	});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<p>Original message: "{{ message }}"</p>
+	<p>computed: "{{ reversedMessage }}"</p>
+	<p>methods: "{{ reversedMessageMethod() }}"</p>
+	<p>watch: "{{ reversedMessageWatch }}"</p>
+	<p>--------------------</p>
+	<p></p>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			message: 'Hello',
+			reversedMessageWatch: 'olleH'
+		},
+		computed: {
+			// a computed getter
+			// 计算属性是基于它们的依赖进行缓存的
+			reversedMessage: function () {
+				// `this` 指向Vue实例
+				console.log('computed reversedMessage-------------');
+				return this.message.split('').reverse().join('');
+			}
+		},
+		methods: {
+			reversedMessageMethod: function () {
+				console.log('methods reversedMessage-------------');
+				return this.message.split('').reverse().join('')
+			}
+		},
+		watch: {
+			// 命令式的和重复的代码 建议能用computed属性就用computed属性
+			message: function () {
+				this.reversedMessageWatch = this.message.split('').reverse().join('');
+			}
+		}
+	});
+
+	//当 vm.message 发生改变时，所有依赖于 vm.reversedMessage 的绑定也会更新
+	vm.message = '123';
+
+	console.log(vm.reversedMessage);  // 不会执行computed中的reversedMessage()方法
+	console.log('**********');
+	console.log(vm.reversedMessageMethod());  // 每次都会执行methods中的reversedMessageMethod()方法
+
+
+</script>
+</body>
+</html>

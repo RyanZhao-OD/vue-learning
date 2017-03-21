@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<div class="static" :class="[activeClass, errorClass]">class array</div>
+	<div class="static" :class="[isActive ? activeClass : '', errorClass]">class array</div>
+	<div class="static" :class="[{ activeaaa: isActive }, errorClass]">class array</div>
+</div>
+
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			activeClass: 'active',
+			errorClass: 'error',
+			isActive: true
+		}
+	});
+
+	setTimeout(function () {
+		vm.isActive = false;
+	}, 1000);
+
+
+
+
+
+</script>
+</body>
+</html>

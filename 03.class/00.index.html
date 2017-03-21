@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl" class="static" :class="{ class1: isActive, 'text-danger': hasError }">
+	test class
+
+
+
+</div>
+
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			isActive: true,
+			hasError: false
+		}
+	});
+
+
+
+</script>
+</body>
+</html>
