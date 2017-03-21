@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<h1 v-if="ok">Yes</h1>
+	<h1 v-else>No</h1>
+
+	<template v-if="ok">
+		<p>template p true</p>
+		<p>template p true</p>
+		<p>template p true</p>
+		<p>template p true</p>
+	</template>
+	<p v-else> <!-- v-else 元素必须紧跟在 v-if 或者 v-else-if 元素的后面——否则它将不会被识别。 -->
+		p false
+	</p>
+
+
+	<div v-if="type === 'A'">
+		A
+	</div>
+	<div v-else-if="type === 'B'">
+		B
+	</div>
+	<div v-else-if="type === 'C'">
+		C
+	</div>
+	<div v-else>
+		Not A/B/C
+	</div>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			ok: true,
+			type: 'x'
+		}
+	});
+
+	setTimeout(function () {
+		vm.ok = false;
+	}, 1500);
+
+</script>
+</body>
+</html>

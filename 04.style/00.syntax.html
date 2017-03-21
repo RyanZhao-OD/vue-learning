@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<div style="background-color: yellow;" :style="{ color: activeColor, fontSize: fontSize + 'px' }">style</div>
+	<div style="background-color: green;" :style="styleObject">style object</div>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			activeColor: 'red',
+			fontSize: 30,
+			styleObject: {
+				color: 'blue',
+				fontSize: '13px'
+			}
+		}
+	});
+</script>
+</body>
+</html>

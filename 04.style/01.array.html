@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<div :style="[baseStyles, overridingStyles]">style array</div>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			baseStyles: {
+				backgroundColor: 'yellow'
+			},
+			overridingStyles: {
+				color: 'red',
+				fontSize: '30px'
+			}
+		}
+	});
+</script>
+</body>
+</html>
