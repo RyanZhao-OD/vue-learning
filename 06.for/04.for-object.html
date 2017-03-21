@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<ul id="vueEl">
+	<li v-for="value in object">
+		{{ value }}
+	</li>
+</ul>
+
+<ul id="vueEl2">
+	<li v-for="(value, key) in object">
+		{{key}}: {{ value }}
+	</li>
+</ul>
+
+<ul id="vueEl3">
+	<li v-for="(value, key, index) in object">
+		{{index}}. {{key}}: {{ value }}
+	</li>
+</ul>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+		}
+	});
+
+    var vm2 = new Vue({
+        el: '#vueEl2',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+
+    var vm3 = new Vue({
+        el: '#vueEl3',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>

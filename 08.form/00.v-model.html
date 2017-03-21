@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<!-- v-model 并不关心表单控件初始化所生成的值。因为它会选择 Vue 实例数据来作为具体的值。 -->
+<ul id="vueEl">
+	<input v-model="message" placeholder="edit me" value="111">
+	<p>Message is: {{ message }}</p>
+</ul>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			message: 'aaa'
+		}
+	});
+
+
+
+</script>
+</body>
+</html>

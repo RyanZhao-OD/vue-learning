@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<div id="example-3">
+	<!-- 阻止单击事件冒泡 -->
+	<a @click.stop="doThis(1)">@click.stop</a>
+
+	<!-- 提交事件不再重载页面 -->
+	<form @submit.prevent="onSubmit(2)">@submit.prevent</form>
+
+	<!-- 修饰符可以串联  -->
+	<a @click.stop.prevent="doThat">@click.stop.prevent</a>
+
+	<!-- 只有修饰符 -->
+	<form @submit.prevent>@submit.prevent</form>
+
+	<!-- 添加事件侦听器时使用事件捕获模式 -->
+	<div @click.capture="doThis">@click.capture</div>
+
+	<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+	<div @click.self="doThat">@click.self</div>
+
+	<!-- 点击事件将只会触发一次 2.1.4 新增 -->
+	<a @click.once="doThis">@click.once</a>
+</div>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#example-3',
+        methods: {
+            doThis: function () {
+				console.log(arguments);
+			},
+            onSubmit: function() {
+                console.log(arguments);
+			},
+            doThat: function () {
+                console.log(arguments);
+			}
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

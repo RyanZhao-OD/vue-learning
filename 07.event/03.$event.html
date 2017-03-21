@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<div id="example-3">
+	<button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+</div>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#example-3',
+        methods: {
+            warn: function (message, event) {
+                // event是原生事件对象
+                if (event) event.preventDefault();
+                console.log(message);
+                console.log(event);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

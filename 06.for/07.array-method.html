@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl" >
+	<div v-for="item in items" :key="item.id">
+		{{ item.value }}
+	</div>
+</div>
+
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+    /**
+	 * Vue 包含一组观察数组的变异方法(会改变原来数组的方法)，所以它们也将会触发视图更新。这些方法如下：
+     * push()
+     * pop()
+     * shift()
+     * unshift()
+     * splice()
+     * sort()
+     * reverse()
+	 *
+	 * 非变异(non-mutating method)方法(不改变原数组的方法)
+	 * filter()
+	 * concat()
+	 * slice()
+     */
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+            items: [
+
+			]
+		}
+	});
+
+	/*
+	for(var i = 0; i < 10; i++) {
+		;(function(index){
+			setTimeout(function() {
+                vm.items.push({
+                    id: index,
+					value: index + '------'
+				});
+			}, index * 1000);
+		})(i);
+	}
+	*/
+
+    vm.items = vm.items.concat([
+        {
+            id: 1,
+            value: 111
+        },
+        {
+            id: 2,
+            value: 222
+        }
+	]);
+
+    /**
+	 * 由于 JavaScript 的限制， Vue 不能检测以下变动的数组：
+	 * 1.当你利用索引直接设置一个项时，例如： vm.items[indexOfItem] = newValue
+     * 2.当你修改数组的长度时，例如： vm.items.length = newLength
+     */
+
+
+</script>
+</body>
+</html>

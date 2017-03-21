@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<ul id="vueEl">
+	<template v-for="(item, index) in items">
+		<li>{{ item.msg }}</li>
+		<li class="divider">{{ index }} ----</li>
+	</template>
+</ul>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			parentMsg: 'parent',
+			items: [
+				{ msg: 'Foo' },
+				{ msg: 'Bar' }
+			]
+		}
+	});
+
+
+
+</script>
+</body>
+</html>
