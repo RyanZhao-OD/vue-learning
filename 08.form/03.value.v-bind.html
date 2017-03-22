@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<!-- v-model 并不关心表单控件初始化所生成的值。因为它会选择 Vue 实例数据来作为具体的值。 -->
+<form id="vueEl">
+	<input type="checkbox" v-model="toggle" v-bind:true-value="toggleTrueValue" v-bind:false-value="toggleFalseValue" />
+	<input type="checkbox" v-model="toggle" :true-value="toggleTrueValue" :false-value="toggleFalseValue" />
+	<p>---------------------</p>
+	<input type="radio" v-model="pick" :value="radioValue">
+	<p>---------------------</p>
+	<select v-model="selected">
+		<!-- 内联对象字面量 -->
+		<option :value="{ number: 123 }">123</option>
+	</select>
+	<p>---------------------</p>
+</form>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			toggleTrueValue: 'aaa',
+			toggleFalseValue: 'bbb',
+			toggle: '',
+
+			radioValue: 111,
+			pick: '',
+
+			selected: ''
+		}
+	});
+
+
+	// 控制台下输入下面代码看看
+	setTimeout(function () {
+		console.log(vm.toggle === vm.toggleTrueValue);
+		console.log(vm.toggle === vm.toggleFalseValue);
+
+		console.log(vm.pick === vm.radioValue);
+
+		console.log(typeof vm.selected);
+		console.log(vm.selected.number);
+	}, 5000);
+
+</script>
+</body>
+</html>

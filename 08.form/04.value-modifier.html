@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<!-- v-model 并不关心表单控件初始化所生成的值。因为它会选择 Vue 实例数据来作为具体的值。 -->
+<form id="vueEl">
+	<!-- 在 "change" 而不是 "input" 事件中更新 -->
+	<input v-model.lazy="msg" >
+
+	<!-- 自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值） -->
+	<input v-model.number="age" type="number">
+
+	<!-- 自动过滤用户输入的首尾空格 -->
+	<input v-model.trim="trimMsg">
+</form>
+
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			msg: '',
+			trimMsg: '',
+			age: ''
+		}
+	});
+
+	console.log(vm.msg);
+	console.log(vm.trimMsg);
+
+
+
+
+
+
+</script>
+</body>
+</html>
