@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<div id="vueEl">
+	<span>{{parentMsg}}</span>
+	<br />
+	<child message="hello!" my-message="props" :msg-from-parent="parentMsg"></child>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+
+	Vue.component('child', {
+		// 声明 props 字符串数组
+		props: ['message', 'myMessage', 'msgFromParent'],
+		// 就像 data 一样，prop 可以用在模板内
+		// 同样也可以在 vm 实例中像 “this.message” 这样使用
+		template: '<span>{{ message }} {{myMessage}} {{msgFromParent}}</span>'
+	});
+
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			parentMsg: 'parent'
+		}
+	});
+
+	setTimeout(function () {
+		vm.parentMsg = 'parent aaaaaaaa';
+	}, 1500);
+
+	console.log(vm.message);
+	console.log(vm.myMessage);
+	console.log(vm.msgFromParent);
+	console.log(vm.parentMsg);
+
+</script>
+</body>
+</html>

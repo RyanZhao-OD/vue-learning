@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<div id="vueEl">
+	<my-component :prop-number="'xxx'" :prop-string-and-string="'asfaewgf'" :prop-string-required="a" :prop-number-default="a"
+				  :prop-object-default="a"></my-component>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+
+	Vue.component('my-component', {
+		props: {
+			// 基础类型检测 （`null` 意思是任何类型都可以）
+			propNumber: Number,
+			// 多种类型
+			propStringAndString: [String, Number],
+			// 必传且是字符串
+			propStringRequired: {
+				type: String,
+				required: true
+			},
+			// 数字，有默认值
+			propNumberDefault: {
+				type: Number,
+				default: 100
+			},
+			// 数组/对象的默认值应当由一个工厂函数返回
+			propObjectDefault: {
+				type: Object,
+				default: function () {
+					return {
+						message: 'hello'
+					};
+				}
+			},
+			// 自定义验证函数
+			propFunction: {
+				validator: function (value) {
+					return value > 10
+				}
+			}
+		},
+		template: '<div>{{propNumber}} {{propStringAndString}} {{propStringRequired}} {{propNumberDefault}} {{propObjectDefault}} {{propNumber}}</div>'
+	});
+
+	var vm = new Vue({
+		el: '#vueEl',
+		data: {
+			a: 1,
+			b: 'bbb'
+		}
+	});
+
+
+
+</script>
+</body>
+</html>

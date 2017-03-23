@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+<div id="vueEl">
+	<my-component></my-component>
+</div>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+	// 不必在全局注册每个组件。通过使用组件实例选项注册，可以使组件仅在另一个实例/组件的作用域中可用：
+	var Child = {
+		template: '<div>local component!</div>'
+	};
+
+	new Vue({
+		el: '#vueEl',
+		components: {
+			// <my-component> 将只在父模板可用
+			'my-component': Child
+		}
+	})
+
+
+
+</script>
+</body>
+</html>

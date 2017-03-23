@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+
+
+<table id="vueEl">
+	<tr is="my-row"></tr>
+</table>
+
+<script src="../assets/vue.min.js"></script>
+<script>
+
+	/**
+	 * 当使用 DOM 作为模版时（例如，将 el 选项挂载到一个已存在的元素上）, 你会受到 HTML 的一些限制，
+	 * 因为 Vue 只有在浏览器解析和标准化 HTML 后才能获取模版内容。
+	 * 尤其像这些元素 <ul> ， <ol>， <table> ， <select> 限制了能被它包裹的元素，
+	 * <option> 只能出现在其它元素内部。
+	 */
+	Vue.component('my-row', {
+		template: '<div>my-row</div>'
+	});
+
+	new Vue({
+		el: '#vueEl'
+	});
+
+	/**
+	 * 应当注意，如果您使用来自以下来源之一的字符串模板，这些限制将不适用：
+	 * 1. <script type="text/x-template">
+	 * 2. JavaScript内联模版字符串
+	 * 3. .vue 组件
+	 */
+
+
+
+</script>
+</body>
+</html>
